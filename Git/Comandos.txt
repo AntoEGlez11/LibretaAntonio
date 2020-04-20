@@ -1,0 +1,59 @@
+******COMANDOS DE GIT*****
+git init
+	- crea un repositorio GIT vacio o rinicialice uno existente
+
+git add
+	- agrega contenido del archivo al indice o area de trabajo, en todo momento revisa sin hay cambios
+
+git rm
+	- elimina archivos del arbol de trabajo y del indice
+
+git checkout
+	-Copia archivos de la rama "master" al �rbol de trabajo.
+
+git commit
+	-Registra cambios en el repositorio
+	(git commit -m "mensaje del commit")
+git merge
+	-Une dos o mas historias de desarrollo juntas
+
+git status
+	-Muestra el estado del �rbol de trabajo
+
+git log
+	-Muestra el historial de los commits
+
+git reset
+	-Nos permite regresar a una version anterior
+**hard - todo vuelve al estado anterior (CUIDADO) vuelve sin guardar cambios
+**soft - 
+
+git diff
+	-Muestra cambios entre commits
+
+git checkout
+	-Te muestra los cambios del archivo anterior (es importante no dar commits, porque se guardan los cambios anteirores)
+	-tambien te puedes mover de ramas poniendo posterior el nombre de la rama
+	git checkout master (vuelve a la rama master)
+
+git clone
+	-clona un repositorio en un nuevo directorio
+
+git push
+	-sube los cambios a tu servidor remoto
+
+git fetch
+	-Descarga objetos y referencias de otro repositorio
+
+git pull
+	-obtene e integra con otro repositorio y baja los cambios
+
+git branch "nombre de la rama"
+	-Crea una rama de la rama en la que estes posicionado y hay que darle nombre a la nueva rama
+
+git remote
+	-para agregar la URL de Github -origin-
+
+git pull origin master
+	-sirve para bajar los cambios del servidor
+	
