@@ -1,0 +1,30 @@
+IMPORTANCIA DE LA BD
+    Las bases de datos digitales por su versatilidad y presicion se han integrado a todos los sectores de la sociedad, sustituyendo al papel y lapiz al manejo de informacion.
+    Estas bases se usan para manipular d emanera facil, rapido y automatica por medio de software especializado.
+
+    Ademas de reducir el tiempo de actualizacion y la consulta de la informacion, tienen otra ventajas, como.
+    
+    INTEGRIDAD de datos; la informacion no se repite y se pierde en el almacenamiento
+
+    SEGURIDAD; la informacion solo puede consultada y modificada por personal capacitado y con permisos
+
+    Se debe evitar dar mal uso como 
+    1. Nunca proporcionar informacion de la base de datos
+    2. No robar informacion de la base de datos
+    3. Notificar anomalias o modificaciones, notificar al supervisor.
+
+ESTRUCTURA DE BD
+    Es un conjunto de informacion estructurada y relacionada que se almacena en un computadora y se consulta por medio de sofware especializado.
+    Se compone de tablas y estas tienen campos y registros
+        Los CAMPOS son los atributos o caracteristicas de la informacion que se desea guardar en la tabla y sirven como clasificadores.
+        Los REGISTROS son los datos que etsan ordenados en los campos conformando las filas en una tabla
+    todas las tablas deben tener una llave primaria que es la identificacion unica para cada registro.
+    Exsten variso tipos de BD, pero las mas usadas son la ENTIDAD-RELACION 
+
+
+
+
+
+
+
+
