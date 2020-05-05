@@ -14,16 +14,80 @@ IMPORTANCIA DE LA BD
     3. Notificar anomalias o modificaciones, notificar al supervisor.
 
 ESTRUCTURA DE BD
-    Es un conjunto de informacion estructurada y relacionada que se almacena en un computadora y se consulta por medio de sofware especializado.
+    Es un conjunto de informacion estructurada y relacionada que se almacena en un computadora y se consulta por medio de software especializado.
     Se compone de tablas y estas tienen campos y registros
         Los CAMPOS son los atributos o caracteristicas de la informacion que se desea guardar en la tabla y sirven como clasificadores.
-        Los REGISTROS son los datos que etsan ordenados en los campos conformando las filas en una tabla
+        Los REGISTROS son los datos que estan ordenados en los campos conformando las filas en una tabla
     todas las tablas deben tener una llave primaria que es la identificacion unica para cada registro.
-    Exsten variso tipos de BD, pero las mas usadas son la ENTIDAD-RELACION 
+    Existen varios tipos de BD, pero las mas usadas son la ENTIDAD-RELACION 
+
+MODELO ENTIDAD-RELACION
+    Es la herramienta que se utiliza para dividir la informacion en tablas de menos tamaño y asi agilizar el procesamiento de datos, tambien permite actualizar de forma automatica la BD si se llega a modificar un registro.
+    Se compone de los siguiente elementos:
+        ENTIDAD = representacion de cualquier cosa que se distingue de las demas y de cual te interesa la informacion en un tabla
+        
+    Relacion de Entidades
+        se relacionan a traves de llaves
+
+    Representacion en diagrama de la siguiente manera
+        Entidades = rectangulo
+        Atributos = ovalos
+        Relacion = rombos
+        Union = flechas
+
+NORMALIZACION
+    Es el proceso de acomodar los datos de una base segun el modelo ENTIDAD-RELACION, existen 3 formas normales de realizarlo:
+
+        1er Forma Normal
+            Se agrupan los campos repetidos en uno solo, respetando la llave primaria de cada registro
+        2da Forma Normal
+            Separa los datos repetidos en tablas individuales, al mismo tiempo que asigna una llave foranea
+        3ra Forma Normal
+            Desagrega los campos que no dependen de las llaves primarias y los coloca en una tabla.
 
 
+ADMINISTRADOR DE BASES DE DATOS
 
+    De este depende la disponibilidad y seguridad de la informacion en las organizaciones
+    Las DB no solo siren para conoecer datos, ahora sirven para hacer predicciones y el comportamiento de muchso aspectos de la organizacion. Estas predicciones se logran con la transformacion de los datos en informacion estructurada para el analisis y aplicacion, en sí los datos se convierten en conocimiento
 
+    El DB aplica metodologias para la extraccion de datos, posterior lo transforma en un repositorio de informacion mas eficiente que permite realizar busquedas gracias a que la informacion esta enfocada a un objetivo de prediccion, para que sea lo mas eficiente posible estas deben estar Normalizadas
+
+LENGUAJE SQL
+
+    Es el Lenguaje Estructurado de Consulta y se divide en:
+        Lenguaje de Definicion de Datos:
+            Sirve para crear, modificar y borrar una BD, tablas y campos y contiene las siguientes funciones basicas:
+
+    CREATE - Crear objetos de datos, como nuevas bases de datos, tablas, vistas etc.
+    ALTER - Modificar una estructura de una tabla u objeto, se pueden agregar, quitar campos a una tabla; modificar el tipo de campo etc
+    DROP - Elimina un objeto de la base de datos
+    TRUNCATE - Borra todo el contenido de una tabla sin eliminar a la misma
+
+        Lenguaje de Manipulacion de Datos:
+            sirve para modificar, insertar, buscar o borrar un registro de la BD y opera con la siguientes funciones basicas:
+
+    INSERT - Agregar registros a una tabla
+    UPDATE - Actualizar registros sin necesidad de borrarlos y volverlos a agregar
+    DELETE - Borra registros de una tabla
+    SELECT - Busca informacion en una BD
+
+MODELO RELACIONAL
+    Este modelo basa sus logica en las relaciones por lo que no es muy diferente al modelo ENTIDAD-RELACIONAL
+    ahora las Entidades son mostradas como la adstraccion de una tabla y los atributos se introducen en esta
+
+    Al pasar una tabla al modelo relacional el primer campo es la llave primaria, seguido de las llaves foraneas y despues los demas campos
+
+    La Cardinalidad se representan con lineas que relacionan dos tablas, desde una llave primaria hasta una llave foranea con la siguiente simbologia
+
+        De uno a uno - cuando un elemento de una entidad solo se relaciona con otro elemento de otra entidad (/img/unoauno.JPG)
+        De uno a muchos - cuando un elemento de una entidad se relaciona con muchos elementos de otra entidad (/img/unoamuchos.JPG)
+        De muchos a muchos - cuando varios elementos de una entidad se pueden relacionan con dos o mas elementos de otra entidad (/img/muchosamuchos.JPG)
+        De uno a cero o muchos - cuando un elemento de una tabla se relaciona con ninguno o muchos elementos de otra (/img/unoaceroomuchos.JPG)
+        De muchos a cero o muchos - cuando muchos elementos de una tabla se relacionan con ninguno o muchos elementos de otra (/img/muchosaceroomuchos.JPG)
+
+        Las cardinalidades pueden variar dependiendo del estandard que se utilice (/img/estandar1.JPG)
+        En el estandar UML (el mas utilizado) se representan de la siguiente manera (/img/estandarUML.JPG)
 
 
 
