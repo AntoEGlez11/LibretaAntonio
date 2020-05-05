@@ -130,3 +130,72 @@ Esquema de Almacen de Datos
     La gran ventaja de este esquema es su flexibilidad pero al generarla se sacrifica su facilidad y pueden llegar a ser dificiles de mantener en un futuro por el crecimiento de datos.
 
 Funciones en SQL
+    En SQL existen tres tipos de funciones:
+        ESCALARES
+        Estas devuelven un unico valor de cualquier tipo de datos
+            Para identificar paramentros se pone un @
+            --Syntax de funcion
+                CREATE FUNCTION Nombre de la funcion(Nombre y Tipo dato)
+                RETURNS tipo de dato
+                AS
+                BEGIN
+                Codigo de la funcion
+                END
+
+        --Ejemplo (obtener el IVA de un dato) (/img/obtenerIVA.JPG)
+
+                CREATE FUNCTION CalculoIVA(@Price money) RETURNS money
+                AS
+                BEGIN
+                DECLARE @IVA money
+                SET @IVA = @Price * 1.16
+                RETURN @IVA
+                END
+                (/img/ejemploIVAfuncion.JPG)
+
+        LINEALES
+        Son aquellas que regresan un conjunto de resultados correspondientes a una sentencia SELECT por los tanto el resultado es una tabla.
+            --Syntax de funcion
+                CREATE FUNCTION Nombre de la funcion(Parametro de entrada)RETURNS Tipo de dato
+                RETURN(Codigo de consulta)
+
+        --Ejemplo (obtener clientes de una misma nacionalidad) (/img/clientesNacionalidad.JPG)
+
+                CREATE FUNCTION CountryCostumers (@Country nvarchar(15)) RETURNS table
+                RETURN(SELECT custumerID,CompanyName,Country FROM Customers
+                        WHERE Country = @Country)
+            Esta funcion genera una tabla y la tienes que mandar llamar con un consulta
+                SELECT * FROM dbo.CountryCostumers('Mexico')
+            tampoco se pueden ejecutar sentanciar para ordenar    
+     
+        Ejecucion de una funcion
+            Este se ejecuta desde la consulta, estas solo se pueden ejecutar dentro de una sentencia
+                SELECT ProductoId, ProductName, UnitPrice, dbo.CalculoIVA(UnitPrice) AS IVA from Products
+
+
+        LINEA MULTIPLE SENTENCIAS
+        Son muy parecidas a las funciones lineales solo que el resultado esta compuesto por la ejecucion de varias SELECT
+            --Syntax de funcion
+                CREATE FUNCTION Nombre de la funcion(Nombre y Tipo dato)
+                RETURNS Nombre de variable table (Estructura de la tabla)
+                AS
+                BEGIN
+                Codigo de la funcion
+                END
+
+        --Ejemplo (Seleccionar informacion del cliente por pais) (/img/clientexpais.JPG)
+            CREATE FUNCTION CountryCostumers2(@Country nvarchar(15))
+                RETURNS @TablaCountry table (CustomerID nachar (5),
+                                             CompanyName(40),
+                                             ContactName nvarchar (30),
+                                             Country nvarchar (15))
+                AS
+                BEGIN
+                    INSERT INTO @TableCountry
+                    SELECT CustomerID, CompanyName,ContactName,Country FROM Customers
+                    WHERE Country = @Country
+                    RETURN
+                END
+                esta sentencia se tiene que escribir para mandarla llamar
+                SELECT * FROM dbo.CountryCostumers2('Argentina')
+
