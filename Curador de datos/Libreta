@@ -152,6 +152,10 @@ Funciones en SQL
                 RETURN @IVA
                 END
                 (/img/ejemploIVAfuncion.JPG)
+        
+        Ejecucion de una funcion
+            Este se ejecuta desde la consulta, estas solo se pueden ejecutar dentro de una sentencia
+                SELECT ProductoId, ProductName, UnitPrice, dbo.CalculoIVA(UnitPrice) AS IVA from Products
 
         LINEALES
         Son aquellas que regresan un conjunto de resultados correspondientes a una sentencia SELECT por los tanto el resultado es una tabla.
@@ -168,9 +172,7 @@ Funciones en SQL
                 SELECT * FROM dbo.CountryCostumers('Mexico')
             tampoco se pueden ejecutar sentanciar para ordenar    
      
-        Ejecucion de una funcion
-            Este se ejecuta desde la consulta, estas solo se pueden ejecutar dentro de una sentencia
-                SELECT ProductoId, ProductName, UnitPrice, dbo.CalculoIVA(UnitPrice) AS IVA from Products
+        
 
 
         LINEA MULTIPLE SENTENCIAS
@@ -199,3 +201,28 @@ Funciones en SQL
                 esta sentencia se tiene que escribir para mandarla llamar
                 SELECT * FROM dbo.CountryCostumers2('Argentina')
 
+TRIGGER
+    Son disparadores de eventos y estos activaran procesos automaticos en la base de datos al utilizar una instruccion DML como INSERT DELETE o UPDATE.
+    Cada Trigger esta anclado solamente a una tabla y funcionan para proteger a la base de datos de alteraciones.
+
+    --Syntax de Trigger
+
+        CREATE TRIGGER      Nombre del TRIGGER
+        ON                  Nombre de la tabla
+        AFTER o FOR               DML(INSERT,UPDATE,DELETE)
+        **Con FOR - se activa primero el TRIGGER y despues la instruccion DML 
+        AS
+        BEGIN
+        END
+    
+    --Ejemplo de Trigger (cuando exista una insercion enla tabla OrderDetails se restre la cantidad de productos comprados de products)
+
+        CREATE TRIGGER  StockUpdate
+        ON              [OrderDetails]
+        FOR INSERT
+        AS
+        BEGIN
+            DECLARE @Cantidad smallint, @ProductoId int, @Stock smallint
+            SELECT @Cantidad=Cuantity, @ProductoID=ProductoID FROM inserted
+            SELECT @Stock=UnitsinStock FROM Products WHERE ProductoId=ProductoID
+            UPDATE Products SET UnitsinStock=@Stock-@Cantidad WHERE ProductoID=ProductoID
