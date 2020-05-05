@@ -89,6 +89,44 @@ MODELO RELACIONAL
         Las cardinalidades pueden variar dependiendo del estandard que se utilice (/img/estandar1.JPG)
         En el estandar UML (el mas utilizado) se representan de la siguiente manera (/img/estandarUML.JPG)
 
+    Construccion del Modelo relacional
+    1. Definir las entidades o tablas necesarias en el Modelo relacional
+    2. Establecer relaciones y anotar la cardinalidad
+    3. Normaliza hasta la tercera forma normal
+    4. Elige atributos, no almacenar datos que pueden inferir de otros
+    5. Tabla cruzada "muchos a muchos" "a muchos o cero" Realizar una tabla cruzada
+        Las tablas cruzadas se usan cuando existe una realcion de muchos a muchos o de muchos a cero, ya que si unes la tabla con una llave foranea a la otra tabla esa misma tendria incosistencias de duplicidad
 
+ALMACEN DE DATOS
+    Como administrador de BD tambien se estara ecargado del diseño y operacion de los Data Warehouse, se deben saber las funcionalidades
 
+        Data Warehouse o Almacen de Datos
+            Es una base de datos orientada al analisis de informacion, este almacen se olvida de las transacciones o procedimientos almcenados en la base de datos y solo se enfoca en extraer y reflejar informacion importante almacenada en otras bases de datos, pero debe cumplir con ciertas caracteristicas.
+    1. Orientado a Temas - Todos los datos deben estar orientados al tema a analizar
+    2. Variante en el tiempo - Los cambios de los datos en el tiempo deben quedar registrados para evitar perdidas de informacion
+    3. No volatil - La informacion no se modifica ni se elimina, solo es de lectura
 
+    La funcion del data warehouse es contener los datos utiles para el ambiente de negocio y posteriormente transformarlos en informacion relevante que se pueda analizar rapidamente. De esta forma los usuarios autorizados pueden realizar consultas o reportes sin tocar o afectar la operacion del sistema.
+    Para cumplir la funcion del almacen es necesario tomar en cuenta el principio de separacion de los datos:
+        Se deben separar los datos usados en operaciones de la base de datos de los datos que se guardan en el almacen para que nunca coincidan, con este principio se definen los ETL´s
+
+        E-Extraccion - Obtener informacion deseada de datos almacenados
+        T-Transformacion - Adecuarlos a los esquemas de data warehouse
+        L-Carga - Depositar los datos en el almacen
+
+    Data Marts - Son Bases de datos departamentales que se alimentan del data warehouse, con el fin de evitar una busqueda exahustiva por parte del sistema y asi recibir la informacion mas rapido. A cada data marts accede un numero limitado de usuarios que se dedican al analisis de informacion de un proposito especifico.
+    Para el analisis de los data marts se contemplan los estructuras multidimensionales de datos
+
+Esquema de Almacen de Datos
+    Estan diseñados para proveer respuestas a practicamente a cualquier duda que pueda tener el personal sobre el funcionamiento de la empresa, ademas de asistir de informacion relevante a la toma de decisiones.
+    Hay diferentes esquemas que se deben desarrollar y son los siguientes:
+
+    Esquema Estrella - se llama asi porque la tabla de hechos o central esta rodeada de entidades llamadas dimensiones y lleva un diseño logico relacional, en la que la tabla de hechos recaen en la segunda forma normal. Las tablas de hechos pueden ser vistas como una tabla cruzada entre varias entidades y la llave primaria queda conformada por la conbinacion de las llaves primarias de las dimensiones, esto facilita la consulta de infoamcion ya qu esolo se almacena en una sola tabla de hechos.
+
+    Esquema Copo de Nieve - Esta diseñado para el mantenimiento de dimensiones parecido a un modelo relacional, ya que cumple con la tercera forma normal; trata de segmentar informacion en caso de que esta sea muy extensa otra ventaja es que este esquema ahorra espacio en memoria.
+    Las sentencias de consulta se vuelve mas complicadas
+
+    Esquema Constelacion - en este existe mas de una tabla de hechos, asi las tablas de dimensiones pueden estar repartidas entre las tablas de hechos con el fin de tener diferente aspectos del negocio registrado.
+    La gran ventaja de este esquema es su flexibilidad pero al generarla se sacrifica su facilidad y pueden llegar a ser dificiles de mantener en un futuro por el crecimiento de datos.
+
+Funciones en SQL
